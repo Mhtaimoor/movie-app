@@ -54,6 +54,7 @@ function App() {
       <Container  fluid style={{backgroundColor: "lightblue", borderRadius: "1em", padding: "1em"}}>
       
       <Movies />
+      
       </Container>
       
     </Container>
