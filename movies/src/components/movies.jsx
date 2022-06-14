@@ -3,15 +3,18 @@ import axios from "axios";
 
 class Movies extends Component {
   state = {
-    movies: [{ name: "Inception", genre: "Sci-fi" }, { name: "Deception", genre: "Sci-fi" }],
+    movies: [
+      { name: "Inception", genre: "Sci-fi" },
+      { name: "Deception", genre: "Sci-fi" },
+    ],
     newMovie: {
       name: "",
-      genre: ""
-    }
+      genre: "",
+    },
   };
   fectMovies = () => {
     var self = this;
-    axios.get("http://localhost:4000/api/movies").then(function(movies) {
+    axios.get("http://localhost:4000/api/movies").then(function (movies) {
       console.log(movies.data);
       self.setState({ movies: movies.data });
     });
@@ -23,9 +26,9 @@ class Movies extends Component {
     axios
       .post("http://localhost:4000/api/movies", {
         name: this.state.newMovie.name,
-        genre: this.state.newMovie.genre
+        genre: this.state.newMovie.genre,
       })
-      .then(function(movies) {
+      .then(function (movies) {
         console.log(movies.data);
         //self.setState({ movies: movies.data });
       });
@@ -34,14 +37,14 @@ class Movies extends Component {
   render() {
     return (
       <div className="row">
-          <label htmlFor="">Enter Movie Name</label>
+        <label htmlFor="">Enter Movie Name</label>
         <input
           type="text"
           name="addMovie"
           id="addMovie"
           placeholder="Add Movie Name Here"
           value={this.state.newMovie.name}
-          onChange={e => {
+          onChange={(e) => {
             let m = { name: e.target.value };
             this.setState({ newMovie: m });
           }}
@@ -53,7 +56,7 @@ class Movies extends Component {
           id="addGenre"
           placeholder="Add Movie Genre Here"
           value={this.state.newMovie.genre}
-          onChange={e => {
+          onChange={(e) => {
             let g = { genre: e.target.value };
             this.setState({ newMovie: g });
           }}
